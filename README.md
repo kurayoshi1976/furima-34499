@@ -66,15 +66,15 @@
 
 ## delivery_addresss テーブル
 
-| Column        | TYPE       | Options           |
-| ------------- | ---------- | ----------------- |
-| postal_code   | string     | null: false       |
-| prefecture_id | integer    | null: false       |
-| municipality  | string     | null: false       |
-| house_number  | string     | null: false       |
-| building      | string     |                   |
-| phone_number  | string     | null: false       |
-| purchase      | references | foreign_key: true |
+| Column          | TYPE       | Options           |
+| --------------- | ---------- | ----------------- |
+| postal_code     | string     | null: false       |
+| prefecture_id   | integer    | null: false       |
+| municipality    | string     | null: false       |
+| house_number    | string     | null: false       |
+| building        | string     |                   |
+| phone_number    | string     | null: false       |
+| purchase_record | references | foreign_key: true |
 
 ### Association
 -belongs_to :purchase_record
