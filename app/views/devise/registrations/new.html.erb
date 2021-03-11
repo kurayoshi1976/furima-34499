@@ -7,11 +7,9 @@
       会員情報入力
     </h1>
   </div>
-
   <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-  <%# <% render partial: '/shared_error_message', locals: { user:@user}  %> %>
+  <%= render partial: "shared/error_messages", locals: { user: @user } %>
   <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">ニックネーム</label>
