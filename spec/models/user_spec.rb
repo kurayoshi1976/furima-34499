@@ -111,8 +111,8 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name katakana is invalid")
       end
-      it 'first_name_katakanaがカタカナ以外の全角以外だと登録できない' do
-        @user.first_name_katakana = 'aAロウ'
+      it 'first_name_katakanaがカタカナ以外の全角文字だと登録できない' do
+        @user.first_name_katakana = 'たロウ'
         @user.valid?
         expect(@user.errors.full_messages).to include("First name katakana is invalid")
       end
