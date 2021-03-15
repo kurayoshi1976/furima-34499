@@ -35,7 +35,11 @@ ActiveRecord::Schema.define(version: 2021_03_14_033021) do
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id"
-    t.integer "genre_id", null: false
+    t.integer "category_id", null: false
+    t.integer "delivery_time_id", null: false
+    t.integer "item_condition_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "shipping_charge_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_articles_on_item_id"
