@@ -1,12 +1,14 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, expect: [:new]
+  before_action :authenticate_user!,except: [:index, :new,]
+
+  def index
+  end
 
   def new
     @item = Item.new
   end
 
-  private
-    def move_to_signed_in?
-      unless user_signed_in?
-        redirect_to '/users/sign_in'
+  def create
+  end
+
 end
