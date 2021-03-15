@@ -3,7 +3,7 @@ class Article < ApplicationRecord
   belongs_to :category, :delivery_time, :item_condition, :prefecture, :shipping_charge
 
   validates :item_id, presence: true
-    eith_options numericality: { other_than: 1 } do
+    with_options numericality: { other_than: 1 } do
       validates :category_id
       validates :delivery_time_id
       validates :item_condition_id
