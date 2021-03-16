@@ -6,16 +6,14 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :describe
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+  end
+  with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :item_condition_id
     validates :shipping_charge_id
     validates :prefecture_id
     validates :delivery_time_id
-    validates :price, format: { with: /\A[0-9]+\z/ }, if:
-    :price?
-        def price?
-          if price? >= 300 && price? <= 9999999
-          end
-        end
   end
+    
 end
