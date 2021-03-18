@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :new]
+  before_action :authenticate_user!, expect: [:index, :new, :create]
+
+  def index
+  end
 
   def new
     @item = Item.new

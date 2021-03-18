@@ -6,6 +6,12 @@ RSpec.describe Item, type: :model do
   end
 
   describe '商品出品' do
+    context '保存できる' do
+      it '全てのデータがあると保存できる' do
+        expect(@item).to be_valid
+      end
+    end
+
     context '保存できない' do
       it 'imageが空だと保存できない' do
         @item.image = nil
@@ -33,6 +39,18 @@ RSpec.describe Item, type: :model do
 
       it 'priceが全角数字だと保存出来ない' do
         @item.price = '７７７７'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not a number')
+      end
+
+      it 'priceが半角英数字混合だと保存出来ない' do
+        @item.price = 'a1a1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not a number')
+      end
+
+      it 'priceが半角英字のみだと保存出来ない' do
+        @item.price = 'aaaa'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not a number')
       end
@@ -78,6 +96,13 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Delivery time Select')
       end
+
+      it 'ユーザーが紐づいてないと保存できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
+      end
+
     end
   end
 end
