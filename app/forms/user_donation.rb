@@ -1,3 +1,2 @@
 class UserDonation
 end
-  
