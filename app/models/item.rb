@@ -1,7 +1,14 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+  belongs_to :delivery_time
+  belongs_to :item_condition
+  belongs_to :prefecture
+  belongs_to :shipping_charge
+  
   belongs_to :user
   has_one_attached :image
-
+  
   with_options presence: true do
     validates :image
     validates :name, length: { maximum: 40 }
