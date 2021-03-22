@@ -20,9 +20,6 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    unless user_signed_in?
-      render :show
-    end
   end
   
 
