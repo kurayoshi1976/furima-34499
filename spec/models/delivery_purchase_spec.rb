@@ -15,6 +15,12 @@ RSpec.describe DeliveryPurchase, type: :model do
     end
 
     context '保存出来ない' do
+      it 'tokenが空だと保存出来ない' do
+        @delivery_purchase.token = nil
+        @delivery_purchase.valid?
+        expect(@delivery_purchase.errors.full_messages).to include("Token can't be blank")
+      end
+
       it 'userが空だと保存出来ない' do
         @delivery_purchase.user_id = nil
         @delivery_purchase.valid?

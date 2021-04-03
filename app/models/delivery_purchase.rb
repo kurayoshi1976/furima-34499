@@ -1,11 +1,11 @@
 class DeliveryPurchase
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :house_number, :building, :phone_number
+  attr_accessor :user_id, :item_id, :token, :postal_code, :prefecture_id, :municipality, :house_number, :building, :phone_number
 
   with_options presence: true do
     validates :user_id
     validates :item_id
-    # 郵便番号は数字３桁、ハイフン、数字４桁の並びのみ許可する
+    validates :token
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }  
     validates :municipality
     validates :house_number
