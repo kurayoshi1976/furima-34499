@@ -10,7 +10,7 @@
     <div class="item-img-content">
       <%= image_tag @item.image, class:"item-box-img" %>
       <% @purchase.each do |purchase| %>
-        <% if @item.id == purchase.item_id %>
+        <% if @item.id == purchase.item.id %>
         <div class="sold-out">
           <span>Sold Out!!</span>
         </div>
