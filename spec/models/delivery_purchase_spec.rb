@@ -12,6 +12,11 @@ RSpec.describe DeliveryPurchase, type: :model do
       it '全てのデータがあると保存出来る' do
         expect(@delivery_purchase).to be_valid
       end
+
+      it 'buildingが空でも保存出来る' do
+        @delivery_purchase.building = nil
+        expect(@delivery_purchase).to be_valid
+      end
     end
 
     context '保存出来ない' do

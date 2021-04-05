@@ -7,10 +7,6 @@ class PurchaseRecordsController < ApplicationController
     redirect_to root_path if user_signed_in? && !@item.purchase_record.nil?
   end
 
-  def new
-    @delivery_purchase = DeliveryPurchase.new
-  end
-
   def create
     @delivery_purchase = DeliveryPurchase.new(delivery_purchase_params)
     if @delivery_purchase.valid?
@@ -18,7 +14,6 @@ class PurchaseRecordsController < ApplicationController
       @delivery_purchase.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
   end
