@@ -111,7 +111,7 @@ RSpec.describe DeliveryPurchase, type: :model do
       end
 
       it 'phone_numberが11桁以上だと保存出来ない' do
-        @delivery_purchase.phone_number = 1_111_111_111_111_111
+        @delivery_purchase.phone_number = '1111111111111111'
         @delivery_purchase.valid?
         expect(@delivery_purchase.errors.full_messages).to include('Phone number is invalid')
       end
