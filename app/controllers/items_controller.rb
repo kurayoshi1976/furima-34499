@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    redirect_to action: :index
   end
 
   def update
@@ -47,7 +48,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_edit
-    redirect_to action: :index unless @item.user.id == current_user.id
+    redirect_to action: :index unless @item.user.id == current_user.id && @item.purchase_record.nil?
   end
 
   def set_item
