@@ -1,10 +1,11 @@
 class PurchaseRecordsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
 
   def index
     @delivery_purchase = PurchaseRecord.new
-    redirect_to user_session_path unless user_signed_in?
-    redirect_to root_path if user_signed_in? && !@item.purchase_record.nil?
+    redirect_to user_session_path
+    redirect_to root_path if current_user.id == @item.user.id
   end
 
   def create
