@@ -6,7 +6,7 @@ class PurchaseRecordsController < ApplicationController
     unless user_signed_in?
       redirect_to user_session_path
     end
-    if @delivery_purchase == current_user.id
+    if user_signed_in? && !@item.purchase_record.nil?
       redirect_to root_path
     end
   end

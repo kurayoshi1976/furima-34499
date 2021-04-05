@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    redirect_to action: :index if !@item.purchase_record.nil?
   end
 
   def update
