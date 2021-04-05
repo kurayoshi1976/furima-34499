@@ -3,12 +3,8 @@ class PurchaseRecordsController < ApplicationController
 
   def index
     @delivery_purchase = PurchaseRecord.new
-    unless user_signed_in?
-      redirect_to user_session_path
-    end
-    if user_signed_in? && !@item.purchase_record.nil?
-      redirect_to root_path
-    end
+    redirect_to user_session_path unless user_signed_in?
+    redirect_to root_path if user_signed_in? && !@item.purchase_record.nil?
   end
 
   def new
@@ -28,12 +24,15 @@ class PurchaseRecordsController < ApplicationController
   end
 
   private
+
   def delivery_purchase_params
-    params.permit(:item_id, :postal_code, :prefecture_id, :municipality, :house_number, :building, :phone_number).merge(user_id: current_user.id, token: params[:token])
+    params.permit(:item_id, :postal_code, :prefecture_id, :municipality, :house_number, :building, :phone_number).merge(
+      user_id: current_user.id, token: params[:token]
+    )
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: delivery_purchase_params[:token],
@@ -44,5 +43,4 @@ class PurchaseRecordsController < ApplicationController
   def set_item
     @item = Item.find(params[:item_id])
   end
-
 end

@@ -40,33 +40,33 @@ RSpec.describe DeliveryPurchase, type: :model do
       end
 
       it 'postal_codeにハイフン(-)がないと保存出来ない' do
-        @delivery_purchase.postal_code = 1111111
+        @delivery_purchase.postal_code = 1_111_111
         @delivery_purchase.valid?
-        expect(@delivery_purchase.errors.full_messages).to include("Postal code is invalid")
+        expect(@delivery_purchase.errors.full_messages).to include('Postal code is invalid')
       end
 
       it 'postal_codeが半角英字のみだと保存出来ない' do
         @delivery_purchase.postal_code = 'aaaa-aaa'
         @delivery_purchase.valid?
-        expect(@delivery_purchase.errors.full_messages).to include("Postal code is invalid")
+        expect(@delivery_purchase.errors.full_messages).to include('Postal code is invalid')
       end
 
       it 'postal_codeが半角英字数字混合だと保存出来ない' do
         @delivery_purchase.postal_code = 'aaaa-111'
         @delivery_purchase.valid?
-        expect(@delivery_purchase.errors.full_messages).to include("Postal code is invalid")
+        expect(@delivery_purchase.errors.full_messages).to include('Postal code is invalid')
       end
 
       it 'postal_codeが全角数字だと保存出来ない' do
         @delivery_purchase.postal_code = '１１１１-１１１'
         @delivery_purchase.valid?
-        expect(@delivery_purchase.errors.full_messages).to include("Postal code is invalid")
+        expect(@delivery_purchase.errors.full_messages).to include('Postal code is invalid')
       end
 
       it 'prefecture_idが1だと保存出来ない' do
         @delivery_purchase.prefecture_id = 1
         @delivery_purchase.valid?
-        expect(@delivery_purchase.errors.full_messages).to include("Prefecture select")
+        expect(@delivery_purchase.errors.full_messages).to include('Prefecture select')
       end
 
       it 'municipalityが空だと保存出来ない' do
@@ -90,26 +90,26 @@ RSpec.describe DeliveryPurchase, type: :model do
       it 'phone_numberが全角数字だと保存出来ない' do
         @delivery_purchase.phone_number = '１１１１１１１１１１１'
         @delivery_purchase.valid?
-        expect(@delivery_purchase.errors.full_messages).to include("Phone number is invalid")
+        expect(@delivery_purchase.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'phone_numberが半角英字のみだと保存出来ない' do
         @delivery_purchase.phone_number = 'aaaaaaaaaaa'
         @delivery_purchase.valid?
-        expect(@delivery_purchase.errors.full_messages).to include("Phone number is invalid")
+        expect(@delivery_purchase.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'phone_numberが半角英字数字混合だと保存出来ない' do
         @delivery_purchase.phone_number = 'a1a1a1a1a1a'
         @delivery_purchase.valid?
-        expect(@delivery_purchase.errors.full_messages).to include("Phone number is invalid")
+        expect(@delivery_purchase.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'phone_numberが11桁以上だと保存出来ない' do
-        @delivery_purchase.phone_number = 1111111111111111
+        @delivery_purchase.phone_number = 1_111_111_111_111_111
         @delivery_purchase.valid?
-        expect(@delivery_purchase.errors.full_messages).to include("Phone number is invalid")
+        expect(@delivery_purchase.errors.full_messages).to include('Phone number is invalid')
       end
     end
-  end  
+  end
 end

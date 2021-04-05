@@ -6,7 +6,7 @@ class DeliveryPurchase
     validates :user_id
     validates :item_id
     validates :token
-    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }  
+    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/ }
     validates :municipality
     validates :house_number
     validates :phone_number, format: { with: /\A\d{11}\z/ }
@@ -15,7 +15,7 @@ class DeliveryPurchase
 
   def save
     purchase_record = PurchaseRecord.create(user_id: user_id, item_id: item_id)
-    DeliveryAddress.create(postal_code: postal_code, prefecture_id: prefecture_id, municipality: municipality, house_number: house_number, building: building, phone_number: phone_number, purchase_record_id: purchase_record.id )
+    DeliveryAddress.create(postal_code: postal_code, prefecture_id: prefecture_id, municipality: municipality,
+                           house_number: house_number, building: building, phone_number: phone_number, purchase_record_id: purchase_record.id)
   end
-
 end

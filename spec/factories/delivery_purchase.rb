@@ -5,7 +5,7 @@ FactoryBot.define do
     municipality  { '某市' }
     house_number  { '某1丁目' }
     building      { nil }
-    phone_number  { 11111111111 }
-    token         {"tok_abcdefghijk00000000000000000"}  
+    phone_number  { 11_111_111_111 }
+    token         { 'tok_abcdefghijk00000000000000000' }
   end
 end
