@@ -76,5 +76,6 @@
 | phone_number    | string     | null: false       |
 | purchase_record | references | foreign_key: true |
 
+
 ### Association
 -belongs_to :purchase_record
