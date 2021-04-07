@@ -5,13 +5,13 @@ class DeliveryPurchase
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :token
+    validates :token, presence: { message: 'を正しく入力してください' }
     validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/ }
     validates :municipality
     validates :house_number
     validates :phone_number, format: { with: /\A\d{11}\z/ }
   end
-  validates :prefecture_id, numericality: { other_than: 1, message: 'select' }
+  validates :prefecture_id, numericality: { other_than: 1, message: 'を入力してください' }
 
   def save
     purchase_record = PurchaseRecord.create(user_id: user_id, item_id: item_id)
